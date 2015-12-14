@@ -12,7 +12,7 @@ class Player
 {
 public:
     Player(); // Default Constructor
-    Player(Graphics& graph,std::string spritePath,int w, int h);
+    Player(Graphics& graph,std::string spritePath,int w, int h, int x, int y);
     ~Player();
     void draw(Graphics& graphics);
     void moveUp();

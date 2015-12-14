@@ -14,7 +14,8 @@ Game::Game()
 void Game::gameLoop()
 {
     Graphics graphics;
-    this->_player = Player(graphics,"img/player.png",15,100);
+    this->_player1 = Player(graphics,"img/player.png",15,100,30,SCREEN_HEIGHT/2 - 50);
+    this->_player2 = Player(graphics,"img/player.png",15,100,SCREEN_WIDTH - 30,SCREEN_HEIGHT/2 - 50);
     this->_ball = Ball(graphics,"img/ball.png",10,10);
     SDL_Event e;
 
@@ -33,11 +34,19 @@ void Game::gameLoop()
                 switch (e.key.keysym.sym)
                 {
                 case SDLK_UP:
-                    this->_player.moveUp();
+                    this->_player1.moveUp();
                     printf("KEYBOARD INPUT : UP\n");
                     break;
                 case SDLK_DOWN:
-                    this->_player.moveDown();
+                    this->_player1.moveDown();
+                    printf("KEYBOARD INPUT : DOWN\n");
+                    break;
+                case SDLK_z:
+                    this->_player2.moveUp();
+                    printf("KEYBOARD INPUT : UP\n");
+                    break;
+                case SDLK_s:
+                    this->_player2.moveDown();
                     printf("KEYBOARD INPUT : DOWN\n");
                     break;
                 }
@@ -51,7 +60,8 @@ void Game::draw(Graphics& graph)
 {
     graph.clear();
 
-    this->_player.draw(graph);
+    this->_player1.draw(graph);
+    this->_player2.draw(graph);
     this->_ball.draw(graph);
 
     graph.flip();

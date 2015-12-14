@@ -10,12 +10,11 @@ Player::Player()
 
 }
 
-
-Player::Player(Graphics& graph,std::string spritePath,int w,int h)
+Player::Player(Graphics& graph,std::string spritePath,int w,int h, int x, int y)
 {
     this->sprite = Sprite(graph,spritePath,w,h);
-    this->x=200;
-    this->y=200;
+    this->x=x;
+    this->y=y;
 }
 
 void Player::draw(Graphics& graph)

@@ -13,7 +13,8 @@ public:
     void draw(Graphics& graph);
 
 private:
-    Player _player;
+    Player _player1;
+    Player _player2;
     Ball _ball;
 };
 

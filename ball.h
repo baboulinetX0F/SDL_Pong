@@ -10,6 +10,7 @@ public:
     Ball(Graphics& graph,std::string spritePath,int w,int h);
     ~Ball();
     void draw(Graphics& graph);
+    void reinit(); // Reinitialize the ball when an user score a point
 
 private:
     int x;  // Position of the ball
