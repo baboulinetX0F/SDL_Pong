@@ -1,0 +1,41 @@
+# depslib dependency file v1.0
+1449712985 source:c:\users\baboulinet\programmation\gamedev\sdl\pong\sdl_pong\game.cpp
+	"game.h"
+	"SDL.h"
+	"graphics.h"
+	<stdio.h>
+
+1449712096 c:\users\baboulinet\programmation\gamedev\sdl\pong\sdl_pong\game.h
+	"player.h"
+
+1449710195 c:\users\baboulinet\programmation\gamedev\sdl\pong\sdl_pong\graphics.h
+	<SDL.h>
+	<map>
+	<string>
+
+1449710163 source:c:\users\baboulinet\programmation\gamedev\sdl\pong\sdl_pong\graphics.cpp
+	"graphics.h"
+	<SDL.h>
+	<SDL_image.h>
+
+1449707753 source:c:\users\baboulinet\programmation\gamedev\sdl\pong\sdl_pong\main.cpp
+	"game.h"
+	<stdio.h>
+
+1449712961 c:\users\baboulinet\programmation\gamedev\sdl\pong\sdl_pong\player.h
+	<SDL.h>
+	<SDL_image.h>
+	<string.h>
+	"graphics.h"
+	"sprite.h"
+
+1449712952 source:c:\users\baboulinet\programmation\gamedev\sdl\pong\sdl_pong\player.cpp
+	"player.h"
+
+1449711911 c:\users\baboulinet\programmation\gamedev\sdl\pong\sdl_pong\sprite.h
+	<SDL.h>
+	"graphics.h"
+
+1449711958 source:c:\users\baboulinet\programmation\gamedev\sdl\pong\sdl_pong\sprite.cpp
+	"sprite.h"
+
