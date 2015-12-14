@@ -15,6 +15,7 @@ void Game::gameLoop()
 {
     Graphics graphics;
     this->_player = Player(graphics,"img/player.png",15,100);
+    this->_ball = Ball(graphics,"img/ball.png",10,10);
     SDL_Event e;
 
     bool quit = false;
@@ -51,6 +52,7 @@ void Game::draw(Graphics& graph)
     graph.clear();
 
     this->_player.draw(graph);
+    this->_ball.draw(graph);
 
     graph.flip();
 }

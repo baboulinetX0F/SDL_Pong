@@ -1,12 +1,13 @@
 # depslib dependency file v1.0
-1449712985 source:c:\users\baboulinet\programmation\gamedev\sdl\pong\sdl_pong\game.cpp
+1450115436 source:c:\users\baboulinet\programmation\gamedev\sdl\pong\sdl_pong\game.cpp
 	"game.h"
 	"SDL.h"
 	"graphics.h"
 	<stdio.h>
 
-1449712096 c:\users\baboulinet\programmation\gamedev\sdl\pong\sdl_pong\game.h
+1450115279 c:\users\baboulinet\programmation\gamedev\sdl\pong\sdl_pong\game.h
 	"player.h"
+	"ball.h"
 
 1449710195 c:\users\baboulinet\programmation\gamedev\sdl\pong\sdl_pong\graphics.h
 	<SDL.h>
@@ -29,13 +30,18 @@
 	"graphics.h"
 	"sprite.h"
 
-1449712952 source:c:\users\baboulinet\programmation\gamedev\sdl\pong\sdl_pong\player.cpp
+1449713497 source:c:\users\baboulinet\programmation\gamedev\sdl\pong\sdl_pong\player.cpp
 	"player.h"
 
 1449711911 c:\users\baboulinet\programmation\gamedev\sdl\pong\sdl_pong\sprite.h
 	<SDL.h>
 	"graphics.h"
 
-1449711958 source:c:\users\baboulinet\programmation\gamedev\sdl\pong\sdl_pong\sprite.cpp
+1450114993 source:c:\users\baboulinet\programmation\gamedev\sdl\pong\sdl_pong\sprite.cpp
 	"sprite.h"
+
+1450115395 c:\users\baboulinet\programmation\gamedev\sdl\pong\sdl_pong\ball.h
+	"sprite.h"
+
+1450115404 source:c:\users\baboulinet\programmation\gamedev\sdl\pong\sdl_pong\ball.cpp
 

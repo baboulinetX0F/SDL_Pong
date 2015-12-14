@@ -2,6 +2,7 @@
 #define GAME_H_INCLUDED
 
 #include "player.h"
+#include "ball.h"
 
 class Game
 {
@@ -13,6 +14,7 @@ public:
 
 private:
     Player _player;
+    Ball _ball;
 };
 
 #endif // GAME_H_INCLUDED
