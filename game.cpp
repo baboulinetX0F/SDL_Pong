@@ -11,6 +11,7 @@ Game::Game()
     this->gameLoop();
 }
 
+// Main Game Loop
 void Game::gameLoop()
 {
     Graphics graphics;
@@ -40,11 +41,13 @@ void Game::gameLoop()
     }
 }
 
+// Calls all the update functions of the differents game objects
 void Game::Update()
 {
     this->_ball.Update();
 }
 
+// Handle the keyboard input
 void Game::handleInput(const Uint8 *keystate)
 {
     if (keystate[SDL_SCANCODE_UP])
@@ -70,6 +73,7 @@ void Game::handleInput(const Uint8 *keystate)
 
 }
 
+// Draw all the differents games objects
 void Game::draw(Graphics& graph)
 {
     graph.clear();

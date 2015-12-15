@@ -3,6 +3,8 @@
 #include <SDL.h>
 #include <SDL_image.h>
 
+
+// Create the windows / renderer
 Graphics::Graphics()
 {
     SDL_CreateWindowAndRenderer(SCREEN_WIDTH,SCREEN_HEIGHT,NULL,&this->window,&this->renderer);
@@ -26,9 +28,12 @@ void Graphics::flip()
     SDL_RenderPresent(this->renderer);
 }
 
+
+// Loads an image located on the path passed on parameter and stock it on the map
+// if it's not previously load
 SDL_Texture* Graphics::loadImage(std::string path)
 {
-    // if the image was not previously load
+    // if the image was not previously load, we stock it on the map
     if (this->_sprites.count(path)==0)
     {
         SDL_Surface* tmp_surface = NULL;
@@ -38,9 +43,11 @@ SDL_Texture* Graphics::loadImage(std::string path)
         tmp_surface=NULL;
     }
 
+    // else we return the image already load from the map
     return this->_sprites[path];
 }
 
+// Blit a texture passed on param1 to the position indicated by the rectangle passed on param2
 void Graphics::blitSurface(SDL_Texture* texture,SDL_Rect* dest_rect)
 {
     SDL_RenderCopy(this->renderer,texture,NULL,dest_rect);
