@@ -11,6 +11,11 @@ Game::Game()
     this->gameLoop();
 }
 
+bool checkCollision()
+{
+
+}
+
 // Main Game Loop
 void Game::gameLoop()
 {

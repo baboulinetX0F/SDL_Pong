@@ -18,4 +18,14 @@ private:
     Graphics* graphics;
 };
 
+// Structure to remplace SDL_Rect to have a float type instead of int for x and y
+// h and y remains unchanged
+struct Position
+{
+    float x;
+    float y;
+    int w;
+    int h;
+};
+
 #endif // SPRITE_H_INCLUDED

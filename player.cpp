@@ -13,25 +13,27 @@ Player::Player()
 Player::Player(Graphics& graph,std::string spritePath,int w,int h, float x, float y)
 {
     this->sprite = Sprite(graph,spritePath,w,h);
-    this->x=x;
-    this->y=y;
+    this->pos.x=x;
+    this->pos.y=y;
+    this->pos.w=w;
+    this->pos.h=h;
 }
 
 void Player::draw(Graphics& graph)
 {
-    this->sprite.draw(graph,this->x,this->y);
+    this->sprite.draw(graph,this->pos.x,this->pos.y);
 }
 
 void Player::moveUp()
 {
-    if (this->y>0)
-        this->y-=player_constants::SPEED;
+    if (this->pos.y>0)
+        this->pos.y-=player_constants::SPEED;
 }
 
 void Player::moveDown()
 {
-    if (this->y<=SCREEN_HEIGHT-100)
-        this->y+=player_constants::SPEED;
+    if (this->pos.y<=SCREEN_HEIGHT-100)
+        this->pos.y+=player_constants::SPEED;
 }
 
 Player::~Player()

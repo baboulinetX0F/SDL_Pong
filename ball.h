@@ -2,6 +2,7 @@
 #define BALL_H_INCLUDED
 
 #include "sprite.h"
+#include "SDL.h"
 
 class Ball
 {
@@ -14,8 +15,7 @@ public:
     void Update();
 
 private:
-    float x;  // Position of the ball
-    float y;
+    struct Position pos;
     bool direction = false;
     Sprite sprite; // Sprite of the ball
 };

@@ -19,8 +19,7 @@ public:
     void moveDown();
 
 private:
-    float x;
-    float y;
+    struct Position pos;
     Sprite sprite;
 };
 
