@@ -38,8 +38,10 @@ void Ball::Update()
         x-=0.05;
 
     if (x < 0 || x > SCREEN_WIDTH)
-        init();
-
+    {
+       // Ajouter addScore dépendant de la direction de la balle
+       init();
+    }
 }
 
 Ball::~Ball()

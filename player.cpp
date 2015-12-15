@@ -24,12 +24,14 @@ void Player::draw(Graphics& graph)
 
 void Player::moveUp()
 {
-    this->y-=player_constants::SPEED;
+    if (this->y>0)
+        this->y-=player_constants::SPEED;
 }
 
 void Player::moveDown()
 {
-    this->y+=player_constants::SPEED;
+    if (this->y<=SCREEN_HEIGHT-100)
+        this->y+=player_constants::SPEED;
 }
 
 Player::~Player()

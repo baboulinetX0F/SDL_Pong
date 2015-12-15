@@ -53,22 +53,18 @@ void Game::handleInput(const Uint8 *keystate)
     if (keystate[SDL_SCANCODE_UP])
     {
         this->_player1.moveUp();
-        printf("KEYBOARD INPUT : UP\n");
     }
     if (keystate[SDL_SCANCODE_DOWN])
     {
         this->_player1.moveDown();
-        printf("KEYBOARD INPUT : DOWN\n");
     }
     if (keystate[SDL_SCANCODE_W])
     {
         this->_player2.moveUp();
-        printf("KEYBOARD INPUT : z\n");
     }
     if (keystate[SDL_SCANCODE_S])
     {
         this->_player2.moveDown();
-        printf("KEYBOARD INPUT : s\n");
     }
 
 }
