@@ -11,6 +11,8 @@ public:
     ~Game();
     void gameLoop();
     void draw(Graphics& graph);
+    void handleInput(const Uint8 *keystate);
+    void Update();
 
 private:
     Player _player1;

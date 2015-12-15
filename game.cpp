@@ -21,6 +21,7 @@ void Game::gameLoop()
 
     bool quit = false;
 
+
     while(!quit)
     {
         while (SDL_PollEvent(&e) != 0)
@@ -29,31 +30,44 @@ void Game::gameLoop()
             {
                 quit=true;
             }
-            else if(e.type == SDL_KEYDOWN)
-            {
-                switch (e.key.keysym.sym)
-                {
-                case SDLK_UP:
-                    this->_player1.moveUp();
-                    printf("KEYBOARD INPUT : UP\n");
-                    break;
-                case SDLK_DOWN:
-                    this->_player1.moveDown();
-                    printf("KEYBOARD INPUT : DOWN\n");
-                    break;
-                case SDLK_z:
-                    this->_player2.moveUp();
-                    printf("KEYBOARD INPUT : UP\n");
-                    break;
-                case SDLK_s:
-                    this->_player2.moveDown();
-                    printf("KEYBOARD INPUT : DOWN\n");
-                    break;
-                }
-            }
         }
+        const Uint8* currentKeyStates = SDL_GetKeyboardState( NULL );
+
+        handleInput(currentKeyStates);
+
+        this->Update();
         this->draw(graphics);
     }
+}
+
+void Game::Update()
+{
+    this->_ball.Update();
+}
+
+void Game::handleInput(const Uint8 *keystate)
+{
+    if (keystate[SDL_SCANCODE_UP])
+    {
+        this->_player1.moveUp();
+        printf("KEYBOARD INPUT : UP\n");
+    }
+    if (keystate[SDL_SCANCODE_DOWN])
+    {
+        this->_player1.moveDown();
+        printf("KEYBOARD INPUT : DOWN\n");
+    }
+    if (keystate[SDL_SCANCODE_W])
+    {
+        this->_player2.moveUp();
+        printf("KEYBOARD INPUT : z\n");
+    }
+    if (keystate[SDL_SCANCODE_S])
+    {
+        this->_player2.moveDown();
+        printf("KEYBOARD INPUT : s\n");
+    }
+
 }
 
 void Game::draw(Graphics& graph)

@@ -9,7 +9,7 @@ class Sprite
 public:
     Sprite();
     Sprite(Graphics& graph,std::string spritePath,int width,int height);
-    void draw(Graphics& graphics,int x,int y);
+    void draw(Graphics& graphics,float x,float y);
     ~Sprite();
 
 private:

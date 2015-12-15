@@ -12,15 +12,15 @@ class Player
 {
 public:
     Player(); // Default Constructor
-    Player(Graphics& graph,std::string spritePath,int w, int h, int x, int y);
+    Player(Graphics& graph,std::string spritePath,int w, int h, float x, float y);
     ~Player();
     void draw(Graphics& graphics);
     void moveUp();
     void moveDown();
 
 private:
-    int x;
-    int y;
+    float x;
+    float y;
     Sprite sprite;
 };
 
