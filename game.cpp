@@ -75,9 +75,37 @@ void Game::Update()
 {
     this->_ball.Update();
     if (checkCollision(_ball.getPos(),_player1.getPos()))
+    {
+        if (_ball.getPos().y >= _player1.getPos().y && _ball.getPos().y <= _player1.getPos().y + _player1.getPos().h / 3)
+        {
+            printf("DEBUG : BALL HIT P1 TOP\n");
+        }
+        else if (_ball.getPos().y >= _player1.getPos().y + _player1.getPos().h / 3 && _ball.getPos().y <= _player1.getPos().y + _player1.getPos().h / 2)
+        {
+            printf("DEBUG : BALL HIT P1 MID\n");
+        }
+        else
+        {
+             printf("DEBUG : BALL HIT P1 BOTTOM\n");
+        }
         _ball.changeDirection();
+    }
     else  if (checkCollision(_ball.getPos(),_player2.getPos()))
+    {
+        if (_ball.getPos().y >= _player2.getPos().y && _ball.getPos().y <= _player2.getPos().y + _player2.getPos().h / 3)
+        {
+            printf("DEBUG : BALL HIT P2 TOP\n");
+        }
+        else if (_ball.getPos().y >= _player2.getPos().y + _player2.getPos().h / 3 && _ball.getPos().y <= _player2.getPos().y + _player2.getPos().h / 2)
+        {
+            printf("DEBUG : BALL HIT P2 MID\n");
+        }
+        else
+        {
+             printf("DEBUG : BALL HIT P2 BOTTOM\n");
+        }
         _ball.changeDirection();
+    }
 }
 
 // Handle the keyboard input
