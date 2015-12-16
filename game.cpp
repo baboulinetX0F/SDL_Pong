@@ -1,6 +1,7 @@
 #include "game.h"
 #include "SDL.h"
 #include "graphics.h"
+#include "sprite.h"
 
 #include <stdio.h>
 
@@ -11,9 +12,32 @@ Game::Game()
     this->gameLoop();
 }
 
-bool checkCollision()
+bool checkCollision(struct Position a, struct Position b)
 {
+    float leftA,leftB;
+    float topA,topB;
+    float rightA,rightB;
+    float bottomA,bottomB;
 
+    leftA = a.x;
+    leftB = b.x;
+    topA = a.y;
+    topB = b.y;
+    rightA = a.x + a.w;
+    rightB = b.x + b.w;
+    bottomA= a.y + a.h;
+    bottomB= b.y + b.h;
+
+    if (bottomA <= topB)
+        return false;
+    if (topA >= bottomB)
+        return false;
+    if(rightA <= leftB)
+        return false;
+    if(leftA >= rightB)
+        return false;
+
+    return true;
 }
 
 // Main Game Loop
@@ -50,6 +74,10 @@ void Game::gameLoop()
 void Game::Update()
 {
     this->_ball.Update();
+    if (checkCollision(_ball.getPos(),_player1.getPos()))
+        _ball.changeDirection();
+    else  if (checkCollision(_ball.getPos(),_player2.getPos()))
+        _ball.changeDirection();
 }
 
 // Handle the keyboard input

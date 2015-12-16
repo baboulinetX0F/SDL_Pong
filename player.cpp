@@ -36,6 +36,11 @@ void Player::moveDown()
         this->pos.y+=player_constants::SPEED;
 }
 
+struct Position Player::getPos()
+{
+    return pos;
+};
+
 Player::~Player()
 {
 

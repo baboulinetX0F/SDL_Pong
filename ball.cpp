@@ -35,6 +35,11 @@ void Ball::init()
         direction = false;
 }
 
+void Ball::changeDirection()
+{
+    direction = !direction;
+}
+
 // Update the position of the ball based on this direction at each call
 // and check if the ball is outside the screen
 void Ball::Update()
@@ -50,6 +55,11 @@ void Ball::Update()
        init();
     }
 }
+
+struct Position Ball::getPos()
+{
+    return pos;
+};
 
 Ball::~Ball()
 {

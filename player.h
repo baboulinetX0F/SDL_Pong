@@ -17,6 +17,7 @@ public:
     void draw(Graphics& graphics);
     void moveUp();
     void moveDown();
+    struct Position getPos();
 
 private:
     struct Position pos;

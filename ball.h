@@ -13,6 +13,8 @@ public:
     void draw(Graphics& graph);
     void init();
     void Update();
+    struct Position getPos();
+    void changeDirection();
 
 private:
     struct Position pos;
