@@ -78,33 +78,39 @@ void Game::Update()
     {
         if (_ball.getPos().y >= _player1.getPos().y && _ball.getPos().y <= _player1.getPos().y + _player1.getPos().h / 3)
         {
+            _ball.setDy(-0.05);
             printf("DEBUG : BALL HIT P1 TOP\n");
         }
         else if (_ball.getPos().y >= _player1.getPos().y + _player1.getPos().h / 3 && _ball.getPos().y <= _player1.getPos().y + _player1.getPos().h / 2)
         {
+            _ball.setDy(0);
             printf("DEBUG : BALL HIT P1 MID\n");
         }
         else
         {
+             _ball.setDy(0.05);
              printf("DEBUG : BALL HIT P1 BOTTOM\n");
         }
-        _ball.changeDirection();
+        _ball.invertDx();
     }
     else  if (checkCollision(_ball.getPos(),_player2.getPos()))
     {
         if (_ball.getPos().y >= _player2.getPos().y && _ball.getPos().y <= _player2.getPos().y + _player2.getPos().h / 3)
         {
+            _ball.setDy(-0.05);
             printf("DEBUG : BALL HIT P2 TOP\n");
         }
         else if (_ball.getPos().y >= _player2.getPos().y + _player2.getPos().h / 3 && _ball.getPos().y <= _player2.getPos().y + _player2.getPos().h / 2)
         {
+             _ball.setDy(0);
             printf("DEBUG : BALL HIT P2 MID\n");
         }
         else
         {
+              _ball.setDy(0.05);
              printf("DEBUG : BALL HIT P2 BOTTOM\n");
         }
-        _ball.changeDirection();
+        _ball.invertDx();
     }
 }
 

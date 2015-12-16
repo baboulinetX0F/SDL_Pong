@@ -14,11 +14,13 @@ public:
     void init();
     void Update();
     struct Position getPos();
-    void changeDirection();
+    void invertDx();
+    void setDy(float y);
 
 private:
     struct Position pos;
-    bool direction = false;
+    float d_x;
+    float d_y;
     Sprite sprite; // Sprite of the ball
 };
 
