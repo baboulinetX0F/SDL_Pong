@@ -42,6 +42,8 @@
 		<Unit filename="player.h" />
 		<Unit filename="sprite.cpp" />
 		<Unit filename="sprite.h" />
+		<Unit filename="text.cpp" />
+		<Unit filename="text.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

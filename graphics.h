@@ -17,6 +17,7 @@ public:
     void clear();
     SDL_Texture* loadImage(std::string path);
     void blitSurface(SDL_Texture* texture,SDL_Rect* dest_rect);
+    SDL_Renderer* getRenderer();
 
 private:
     SDL_Window* window;

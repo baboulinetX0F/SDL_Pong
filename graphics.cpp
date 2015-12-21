@@ -2,6 +2,7 @@
 
 #include <SDL.h>
 #include <SDL_image.h>
+#include <SDL_ttf.h>
 
 
 // Create the windows / renderer
@@ -47,8 +48,14 @@ SDL_Texture* Graphics::loadImage(std::string path)
     return this->_sprites[path];
 }
 
+SDL_Renderer* Graphics::getRenderer()
+{
+    return this->renderer;
+}
+
 // Blit a texture passed on param1 to the position indicated by the rectangle passed on param2
 void Graphics::blitSurface(SDL_Texture* texture,SDL_Rect* dest_rect)
 {
     SDL_RenderCopy(this->renderer,texture,NULL,dest_rect);
 }
+

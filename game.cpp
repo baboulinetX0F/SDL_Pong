@@ -4,11 +4,13 @@
 #include "sprite.h"
 
 #include <stdio.h>
+#include <stdlib.h>
 
 Game::Game()
 {
     SDL_Init(SDL_INIT_EVERYTHING);
     IMG_Init(IMG_INIT_PNG);
+    TTF_Init();
     this->gameLoop();
 }
 
@@ -47,6 +49,7 @@ void Game::gameLoop()
     this->_player1 = Player(graphics,"img/player.png",15,100,30,SCREEN_HEIGHT/2 - 50);
     this->_player2 = Player(graphics,"img/player.png",15,100,SCREEN_WIDTH - 30,SCREEN_HEIGHT/2 - 50);
     this->_ball = Ball(graphics,"img/ball.png",10,10);
+    this->UIInit(graphics);
     SDL_Event e;
 
     bool quit = false;
@@ -70,10 +73,30 @@ void Game::gameLoop()
     }
 }
 
+void Game::Score(int player_id)
+{
+    if (player_id == 1)
+    {
+        score[0]++;
+    }
+    else
+    {
+        score[1]++;
+    }
+}
+
+
+void Game::UIInit(Graphics& graph)
+{
+    this->scoreP1 = Text(graph,"font/Retro.ttf",24,"P1");
+    this->scoreP2 = Text(graph,"font/Retro.ttf",24,"P2");
+}
+
 // Calls all the update functions of the differents game objects
 void Game::Update()
 {
     this->_ball.Update();
+
     if (checkCollision(_ball.getPos(),_player1.getPos()))
     {
         if (_ball.getPos().y >= _player1.getPos().y && _ball.getPos().y <= _player1.getPos().y + _player1.getPos().h / 3)
@@ -119,19 +142,19 @@ void Game::handleInput(const Uint8 *keystate)
 {
     if (keystate[SDL_SCANCODE_UP])
     {
-        this->_player1.moveUp();
+        this->_player2.moveUp();
     }
     if (keystate[SDL_SCANCODE_DOWN])
     {
-        this->_player1.moveDown();
+        this->_player2.moveDown();
     }
     if (keystate[SDL_SCANCODE_W])
     {
-        this->_player2.moveUp();
+        this->_player1.moveUp();
     }
     if (keystate[SDL_SCANCODE_S])
     {
-        this->_player2.moveDown();
+        this->_player1.moveDown();
     }
 
 }
@@ -144,6 +167,8 @@ void Game::draw(Graphics& graph)
     this->_player1.draw(graph);
     this->_player2.draw(graph);
     this->_ball.draw(graph);
+    this->scoreP1.draw(graph);
+    this->scoreP2.draw(graph);
 
     graph.flip();
 }
