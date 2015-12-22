@@ -2,6 +2,7 @@
 #include "SDL.h"
 #include "graphics.h"
 #include "sprite.h"
+#include <SDL_mixer.h>
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -11,7 +12,14 @@ Game::Game()
     SDL_Init(SDL_INIT_EVERYTHING);
     IMG_Init(IMG_INIT_PNG);
     TTF_Init();
+    this->initSound();
     this->gameLoop();
+}
+
+void Game::initSound()
+{
+    audioMixer.loadSound("sounds/paddle_hit.wav");
+    audioMixer.loadSound("sounds/paddle_hit2.wav");
 }
 
 bool checkCollision(struct Position a, struct Position b)
@@ -125,6 +133,7 @@ void Game::Update()
                 printf("DEBUG : BALL HIT P1 BOTTOM\n");
             }
             _ball.invertDx();
+            audioMixer.playSound("sounds/paddle_hit.wav");
         }
     }
     else  if (checkCollision(_ball.getPos(),_player2.getPos()))
@@ -147,6 +156,7 @@ void Game::Update()
                 printf("DEBUG : BALL HIT P2 BOTTOM\n");
             }
             _ball.invertDx();
+            audioMixer.playSound("sounds/paddle_hit2.wav");
         }
     }
 

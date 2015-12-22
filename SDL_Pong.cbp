@@ -31,6 +31,8 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="audio.cpp" />
+		<Unit filename="audio.h" />
 		<Unit filename="ball.cpp" />
 		<Unit filename="ball.h" />
 		<Unit filename="game.cpp" />

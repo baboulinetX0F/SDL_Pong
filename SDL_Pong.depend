@@ -1,17 +1,19 @@
 # depslib dependency file v1.0
-1450802364 source:c:\users\baboulinet\programmation\gamedev\sdl\pong\sdl_pong\game.cpp
+1450805248 source:c:\users\baboulinet\programmation\gamedev\sdl\pong\sdl_pong\game.cpp
 	"game.h"
 	"SDL.h"
 	"graphics.h"
 	"sprite.h"
+	<SDL_mixer.h>
 	<stdio.h>
 	<stdlib.h>
 
-1450801194 c:\users\baboulinet\programmation\gamedev\sdl\pong\sdl_pong\game.h
+1450821681 c:\users\baboulinet\programmation\gamedev\sdl\pong\sdl_pong\game.h
 	<SDL_ttf.h>
 	"player.h"
 	"ball.h"
 	"text.h"
+	"audio.h"
 
 1450716868 c:\users\baboulinet\programmation\gamedev\sdl\pong\sdl_pong\graphics.h
 	<SDL.h>
@@ -35,7 +37,7 @@
 	"graphics.h"
 	"sprite.h"
 
-1450224348 source:c:\users\baboulinet\programmation\gamedev\sdl\pong\sdl_pong\player.cpp
+1450802945 source:c:\users\baboulinet\programmation\gamedev\sdl\pong\sdl_pong\player.cpp
 	"player.h"
 
 1450223816 c:\users\baboulinet\programmation\gamedev\sdl\pong\sdl_pong\sprite.h
@@ -60,4 +62,14 @@
 	<SDL_ttf.h>
 	<string>
 	"graphics.h"
+
+1450820766 source:c:\users\baboulinet\programmation\gamedev\sdl\pong\sdl_pong\audio.cpp
+	"audio.h"
+	<stdio.h>
+
+1450807481 c:\users\baboulinet\programmation\gamedev\sdl\pong\sdl_pong\audio.h
+	<SDL.h>
+	<SDL_mixer.h>
+	<string>
+	<map>
 

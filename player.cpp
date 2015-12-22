@@ -5,7 +5,7 @@ namespace player_constants
     const float SPEED = 0.1;
 }
 
-Player::Player()
+Player::Player()    // Default Constructor
 {
 
 }

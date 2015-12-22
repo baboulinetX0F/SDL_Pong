@@ -6,6 +6,7 @@
 #include "player.h"
 #include "ball.h"
 #include "text.h"
+#include "audio.h"
 
 class Game
 {
@@ -18,6 +19,7 @@ public:
     void Update();
     void checkScore();
     void UIInit(Graphics& graph);
+    void initSound();
 
 private:
     Player _player1;
@@ -27,6 +29,7 @@ private:
     Text textScoreP2;
     int scoreP1;
     int scoreP2;
+    Audio audioMixer;
 };
 
 #endif // GAME_H_INCLUDED
