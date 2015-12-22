@@ -60,12 +60,10 @@ void Ball::Update()
     if (pos.x < 0)
     {
        pendingPoint = 2;
-       init();
     }
     else if (pos.x > SCREEN_WIDTH)
     {
         pendingPoint = 1;
-        init();
     }
     if (pos.y <= 0)
     {

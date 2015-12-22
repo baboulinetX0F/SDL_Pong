@@ -41,6 +41,11 @@ struct Position Player::getPos()
     return pos;
 };
 
+void Player::reinit()
+{
+    this->pos.y = SCREEN_HEIGHT/2 - this->pos.h/2;
+}
+
 Player::~Player()
 {
 

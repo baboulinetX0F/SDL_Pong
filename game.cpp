@@ -97,13 +97,27 @@ void Game::checkScore()
         scoreP2++;
         this->textScoreP2.editText(intToString(scoreP2));
         _ball.resetPendingPoint();
+        reinitObjects();
     }
     else if (_ball.getPendingPoint()==1)
     {
          scoreP1++;
          this->textScoreP1.editText(intToString(scoreP1));
          _ball.resetPendingPoint();
+         reinitObjects();
     }
+}
+
+void Game::reinitObjects()
+{
+    this->_player1.reinit();
+    this->_player2.reinit();
+
+    Uint32 startTime;
+    startTime = SDL_GetTicks();
+
+    this->_ball.init();
+    SDL_Delay(500);
 }
 
 

@@ -18,6 +18,7 @@ public:
     void moveUp();
     void moveDown();
     struct Position getPos();
+    void reinit();
 
 private:
     struct Position pos;

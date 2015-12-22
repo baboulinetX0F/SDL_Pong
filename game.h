@@ -20,6 +20,7 @@ public:
     void checkScore();
     void UIInit(Graphics& graph);
     void initSound();
+    void reinitObjects();
 
 private:
     // Game objects
