@@ -22,14 +22,23 @@ public:
     void initSound();
 
 private:
+    // Game objects
     Player _player1;
     Player _player2;
     Ball _ball;
+
+    // UI / Score Display
     Text textScoreP1;
     Text textScoreP2;
     int scoreP1;
     int scoreP2;
+
     Audio audioMixer;
+    int gameState = 0;      // 0 : Not loaded   1 : Menu    2 : Game
+
+    // Menu
+    SDL_Texture* menuTexture = NULL;
+    SDL_Rect menuRect = {0,0,SCREEN_WIDTH,SCREEN_HEIGHT};
 };
 
 #endif // GAME_H_INCLUDED

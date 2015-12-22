@@ -60,9 +60,11 @@ void Game::gameLoop()
     this->scoreP1 = 0;
     this->scoreP2 = 0;
     this->UIInit(graphics);
+    this->menuTexture = graphics.loadImage("img/menu.png");
     SDL_Event e;
 
     bool quit = false;
+    gameState = 1;
 
 
     while(!quit)
@@ -73,10 +75,15 @@ void Game::gameLoop()
             {
                 quit=true;
             }
+             if (gameState == 1 && e.type == SDL_KEYDOWN)
+            {
+                gameState = 2;
+            }
         }
+
         const Uint8* currentKeyStates = SDL_GetKeyboardState( NULL );
 
-        handleInput(currentKeyStates);
+               handleInput(currentKeyStates);
 
         this->Update();
         this->draw(graphics);
@@ -103,12 +110,14 @@ void Game::checkScore()
 void Game::UIInit(Graphics& graph)
 {
     this->textScoreP1 = Text(graph,"font/Retro.ttf",24,intToString(scoreP1),SCREEN_WIDTH/4,20);
-    this->textScoreP2 = Text(graph,"font/Retro.ttf",24,intToString(scoreP2),SCREEN_WIDTH/1.5,20);
+    this->textScoreP2 = Text(graph,"font/Retro.ttf",24,intToString(scoreP2),(SCREEN_WIDTH/4) * 3,20);
 }
 
 // Calls all the update functions of the differents game objects
 void Game::Update()
 {
+    if (gameState == 2)
+    {
     this->_ball.Update();
 
     checkScore();
@@ -159,6 +168,7 @@ void Game::Update()
             audioMixer.playSound("sounds/paddle_hit2.wav");
         }
     }
+    }
 
 }
 
@@ -189,11 +199,18 @@ void Game::draw(Graphics& graph)
 {
     graph.clear();
 
-    this->_player1.draw(graph);
-    this->_player2.draw(graph);
-    this->_ball.draw(graph);
-    this->textScoreP1.draw(graph);
-    this->textScoreP2.draw(graph);
+    if (gameState == 1)
+    {
+        graph.blitSurface(this->menuTexture,&this->menuRect);
+    }
+    if (gameState == 2)
+    {
+        this->_player1.draw(graph);
+        this->_player2.draw(graph);
+        this->_ball.draw(graph);
+        this->textScoreP1.draw(graph);
+        this->textScoreP2.draw(graph);
+    }
 
     graph.flip();
 }

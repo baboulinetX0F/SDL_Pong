@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1450805248 source:c:\users\baboulinet\programmation\gamedev\sdl\pong\sdl_pong\game.cpp
+1450823595 source:c:\users\baboulinet\programmation\gamedev\sdl\pong\sdl_pong\game.cpp
 	"game.h"
 	"SDL.h"
 	"graphics.h"
@@ -8,7 +8,7 @@
 	<stdio.h>
 	<stdlib.h>
 
-1450821681 c:\users\baboulinet\programmation\gamedev\sdl\pong\sdl_pong\game.h
+1450823429 c:\users\baboulinet\programmation\gamedev\sdl\pong\sdl_pong\game.h
 	<SDL_ttf.h>
 	"player.h"
 	"ball.h"
