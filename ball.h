@@ -21,10 +21,10 @@ public:
 
 private:
     struct Position pos;
-    float d_x;
+    float d_x;  // Direction of the ball on the x/y axis
     float d_y;
     Sprite sprite; // Sprite of the ball
-    int pendingPoint = 0;
+    int pendingPoint = 0;   // 0 = No point to add  1:Player1 scored  2:Player2 scored
 };
 
 #endif // BALL_H_INCLUDED

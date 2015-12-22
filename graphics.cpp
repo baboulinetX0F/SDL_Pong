@@ -5,7 +5,7 @@
 #include <SDL_ttf.h>
 
 
-// Create the windows / renderer
+// Default Constructor : Create the window and the renderer
 Graphics::Graphics()
 {
     SDL_CreateWindowAndRenderer(SCREEN_WIDTH,SCREEN_HEIGHT,NULL,&this->window,&this->renderer);
@@ -19,6 +19,13 @@ Graphics::~Graphics()
     SDL_DestroyRenderer(this->renderer);
 }
 
+////////////////////////// ACCESSORS ///////////////////////////////////////////////////////
+SDL_Renderer* Graphics::getRenderer()
+{
+    return this->renderer;
+}
+
+
 void Graphics::clear()
 {
     SDL_RenderClear(this->renderer);
@@ -30,7 +37,7 @@ void Graphics::flip()
 }
 
 
-// Loads an image located on the path passed on parameter and stock it on the map
+// loadImage : Loads an image located on the path passed on parameter and stock it on the map
 // if it's not previously load
 SDL_Texture* Graphics::loadImage(std::string path)
 {
@@ -48,10 +55,6 @@ SDL_Texture* Graphics::loadImage(std::string path)
     return this->_sprites[path];
 }
 
-SDL_Renderer* Graphics::getRenderer()
-{
-    return this->renderer;
-}
 
 // Blit a texture passed on param1 to the position indicated by the rectangle passed on param2
 void Graphics::blitSurface(SDL_Texture* texture,SDL_Rect* dest_rect)

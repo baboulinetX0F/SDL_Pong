@@ -18,7 +18,7 @@ public:
     void handleInput(const Uint8 *keystate);
     void Update();
     void checkScore();
-    void UIInit(Graphics& graph);
+    void initUI(Graphics& graph);
     void initSound();
     void reinitObjects();
 

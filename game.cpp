@@ -2,11 +2,11 @@
 #include "SDL.h"
 #include "graphics.h"
 #include "sprite.h"
-#include <SDL_mixer.h>
 
 #include <stdio.h>
 #include <stdlib.h>
 
+// Default Constructor : Initialize everything (SDL,IMG,TTF,sounds) and launch the gameloop
 Game::Game()
 {
     SDL_Init(SDL_INIT_EVERYTHING);
@@ -16,12 +16,14 @@ Game::Game()
     this->gameLoop();
 }
 
+// initSound : Load all the sounds use in the game
 void Game::initSound()
 {
     audioMixer.loadSound("sounds/paddle_hit.wav");
     audioMixer.loadSound("sounds/paddle_hit2.wav");
 }
 
+// checkCollision : Return true if the object a is in collision with the object b
 bool checkCollision(struct Position a, struct Position b)
 {
     float leftA,leftB;
@@ -53,19 +55,24 @@ bool checkCollision(struct Position a, struct Position b)
 // Main Game Loop
 void Game::gameLoop()
 {
-    Graphics graphics;
+    Graphics graphics;  // Initialize the graphics object
+
+    // Intialisation of the game objects (player's paddle + ball)
     this->_player1 = Player(graphics,"img/player.png",15,100,30,SCREEN_HEIGHT/2 - 50);
     this->_player2 = Player(graphics,"img/player.png",15,100,SCREEN_WIDTH - 30,SCREEN_HEIGHT/2 - 50);
     this->_ball = Ball(graphics,"img/ball.png",10,10);
+
+    // Init the score count
     this->scoreP1 = 0;
     this->scoreP2 = 0;
-    this->UIInit(graphics);
+
+    this->initUI(graphics);
     this->menuTexture = graphics.loadImage("img/menu.png");
+
     SDL_Event e;
 
     bool quit = false;
-    gameState = 1;
-
+    gameState = 1;      // Change the gamestate to 1 (Title) when everything is initialized
 
     while(!quit)
     {
@@ -75,6 +82,7 @@ void Game::gameLoop()
             {
                 quit=true;
             }
+            // When a key is pressed during the title screen Gamestate, go to Game gamestation
              if (gameState == 1 && e.type == SDL_KEYDOWN)
             {
                 gameState = 2;
@@ -82,14 +90,14 @@ void Game::gameLoop()
         }
 
         const Uint8* currentKeyStates = SDL_GetKeyboardState( NULL );
-
-               handleInput(currentKeyStates);
+        handleInput(currentKeyStates);
 
         this->Update();
         this->draw(graphics);
     }
 }
 
+// checkScore : Called at every update to check if a player scored
 void Game::checkScore()
 {
     if (_ball.getPendingPoint()==2)
@@ -108,6 +116,7 @@ void Game::checkScore()
     }
 }
 
+// reinitObjects : Replace the game objects when called (called after a point is scored)
 void Game::reinitObjects()
 {
     this->_player1.reinit();
@@ -120,16 +129,17 @@ void Game::reinitObjects()
     SDL_Delay(500);
 }
 
-
-void Game::UIInit(Graphics& graph)
+// initUI : Initialize all the object UI related (Text objects in our case for the score display)
+void Game::initUI(Graphics& graph)
 {
     this->textScoreP1 = Text(graph,"font/Retro.ttf",24,intToString(scoreP1),SCREEN_WIDTH/4,20);
     this->textScoreP2 = Text(graph,"font/Retro.ttf",24,intToString(scoreP2),(SCREEN_WIDTH/4) * 3,20);
 }
 
-// Calls all the update functions of the differents game objects
+// Update : Calls all the update functions of the differents game objects
 void Game::Update()
 {
+    // Check if we are in the Game gamestate
     if (gameState == 2)
     {
     this->_ball.Update();
@@ -186,7 +196,7 @@ void Game::Update()
 
 }
 
-// Handle the keyboard input
+// handleInput : Handle the user's keyboard input
 void Game::handleInput(const Uint8 *keystate)
 {
     if (keystate[SDL_SCANCODE_UP])
@@ -213,10 +223,13 @@ void Game::draw(Graphics& graph)
 {
     graph.clear();
 
+    // When gamestate is menu, only draw titlemenu texture
     if (gameState == 1)
     {
         graph.blitSurface(this->menuTexture,&this->menuRect);
     }
+
+    // When gamestate is game, draw all the gameobject and UI
     if (gameState == 2)
     {
         this->_player1.draw(graph);

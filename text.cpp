@@ -17,12 +17,14 @@ Text::Text(Graphics& graph, std::string fontName, int fontSize, std::string defa
     editText(defaultText.c_str());
 }
 
+// editText : Edit the text to be displayed by this text object
 void Text::editText (std::string newText)
 {
     this->currentText = newText;
     this->renderCall = true;    // Since the text have changed, the texture need to be re-rendered at the next draw call
 }
 
+// draw : Draw the text on the screen
 void Text::draw(Graphics& graph)
 {
     // If the texture need to be rendered again
@@ -43,6 +45,7 @@ void Text::draw(Graphics& graph)
     graph.blitSurface(this->fontTexture,&destRect);
 }
 
+// intToString : convert an Integer into a string
 std::string intToString(int input)
 {
     std::string output;

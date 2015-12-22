@@ -20,13 +20,13 @@ Ball::Ball(Graphics& graph,std::string spritePath,int w,int h)
     init();
 }
 
-// Draw the sprite of the ball on the screen
+// draw : Draw the sprite of the ball on the screen
 void Ball::draw(Graphics& graph)
 {
     sprite.draw(graph,pos.x,pos.y);
 }
 
-// Set the ball to the center of the screen and set his direction
+// init : Set the ball to the center of the screen and set his direction
 // (called at the begin or after a player score a point)
 void Ball::init()
 {
@@ -39,18 +39,20 @@ void Ball::init()
         d_x = -ball_constants::SPEED_X;
 }
 
+// invertDx : Invert the direction of the ball
 void Ball::invertDx()
 {
     d_x = -(d_x);
 }
 
+// setDy : Set the direction of the ball on the Y axis
 void Ball::setDy(float y)
 {
     d_y=y;
 }
 
 
-// Update the position of the ball based on this direction at each call
+// Update : Update the position of the ball based on this direction at each call
 // and check if the ball is outside the screen
 void Ball::Update()
 {
@@ -75,16 +77,20 @@ void Ball::Update()
     }
 }
 
+
+// getPos : return the position of the ball on the form of the Position struct
 struct Position Ball::getPos()
 {
     return pos;
 };
 
+//////////////////////// ASSESSORS //////////////////////////////
 int Ball::getPendingPoint()
 {
     return pendingPoint;
 }
 
+// resetPendingPoint : reset the pending point (after a player score was updated)
 void Ball::resetPendingPoint()
 {
     pendingPoint = 0;
