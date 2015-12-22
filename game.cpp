@@ -79,7 +79,7 @@ void Game::Score(int player_id)
     {
         score[0]++;
     }
-    else
+    else if (player_id == 2)
     {
         score[1]++;
     }
@@ -88,15 +88,14 @@ void Game::Score(int player_id)
 
 void Game::UIInit(Graphics& graph)
 {
-    this->scoreP1 = Text(graph,"font/Retro.ttf",24,"P1");
-    this->scoreP2 = Text(graph,"font/Retro.ttf",24,"P2");
+    this->scoreP1 = Text(graph,"font/Retro.ttf",24,"P1",SCREEN_WIDTH/4,20);
+    this->scoreP2 = Text(graph,"font/Retro.ttf",24,"P2",SCREEN_WIDTH/1.5,20);
 }
 
 // Calls all the update functions of the differents game objects
 void Game::Update()
 {
     this->_ball.Update();
-
     if (checkCollision(_ball.getPos(),_player1.getPos()))
     {
         if (_ball.getPos().x >= _player1.getPos().x + _player1.getPos().w/2)
@@ -141,6 +140,7 @@ void Game::Update()
             _ball.invertDx();
         }
     }
+
 }
 
 // Handle the keyboard input

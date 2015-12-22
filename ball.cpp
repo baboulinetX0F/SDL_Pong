@@ -52,7 +52,6 @@ void Ball::setDy(float y)
 
 // Update the position of the ball based on this direction at each call
 // and check if the ball is outside the screen
-// return 1 if the player 1 score / return 2 if the player 2 score
 void Ball::Update()
 {
     pos.x+=d_x;
@@ -61,10 +60,12 @@ void Ball::Update()
     if (pos.x < 0)
     {
        init();
+
     }
     else if (pos.x > SCREEN_WIDTH)
     {
         init();
+
     }
     if (pos.y <= 0)
     {

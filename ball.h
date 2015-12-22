@@ -12,7 +12,7 @@ public:
     ~Ball();
     void draw(Graphics& graph);
     void init();
-    void Update();   //
+    void Update();
     struct Position getPos();
     void invertDx();
     void setDy(float y);

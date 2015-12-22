@@ -5,15 +5,15 @@ Text::Text() {} // Default constructor (not used)
 
 Text::~Text() {} // Default Destructor
 
-Text::Text(Graphics& graph, std::string fontName, int fontSize, std::string defaultText)
+Text::Text(Graphics& graph, std::string fontName, int fontSize, std::string defaultText,int base_x, int base_y)
 {
     this->font = TTF_OpenFont(fontName.c_str(),fontSize);
     this->fontColor = {255,255,255};
-    SDL_Surface* tmpSurface = TTF_RenderText_Blended(this->font,this->currentText.c_str(),this->fontColor);
-    this->fontTexture = SDL_CreateTextureFromSurface(graph.getRenderer(),tmpSurface);
-    SDL_FreeSurface(tmpSurface);
-    this->x = 200; // Added later into the constructor parameters
-    this->y = 200;
+    this->x = base_x; // Added later into the constructor parameters
+    this->y = base_y;
+    this->w=0;
+    this->h=0;
+    editText(defaultText.c_str());
 }
 
 void Text::editText (std::string newText)
@@ -27,14 +27,17 @@ void Text::draw(Graphics& graph)
     // If the texture need to be rendered again
     if (this->renderCall)
     {
-        SDL_Surface* tmpSurface = TTF_RenderText_Blended(this->font,this->currentText.c_str(),this->fontColor);
+        SDL_Surface* tmpSurface = TTF_RenderText_Solid(this->font,this->currentText.c_str(),this->fontColor);
         this->fontTexture = SDL_CreateTextureFromSurface(graph.getRenderer(),tmpSurface);
         SDL_FreeSurface(tmpSurface);
+        SDL_QueryTexture(this->fontTexture,NULL,NULL,&this->w,&this->h);
         this->renderCall = false;
     }
 
     SDL_Rect destRect;
     destRect.x = this->x;
     destRect.y = this->y;
+    destRect.w = this->w;
+    destRect.h = this->h;
     graph.blitSurface(this->fontTexture,&destRect);
 }
