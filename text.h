@@ -22,12 +22,15 @@ private:
     SDL_Color fontColor;
     std::string currentText;
     bool renderCall = false;            // To know if the text texture need to be re-rendered (ex. When the text is changed)
-    int x;
+
+    int x; // x,y,w,h to replace with SDL_Rect struct
     int y;
     int w;
     int h;
-
-
 };
+
+std::string intToString(int input);
+
+
 
 #endif // TEXT_H_INCLUDED

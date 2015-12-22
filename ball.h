@@ -16,12 +16,15 @@ public:
     struct Position getPos();
     void invertDx();
     void setDy(float y);
+    int getPendingPoint();
+    void resetPendingPoint();
 
 private:
     struct Position pos;
     float d_x;
     float d_y;
     Sprite sprite; // Sprite of the ball
+    int pendingPoint = 0;
 };
 
 #endif // BALL_H_INCLUDED

@@ -1,4 +1,5 @@
 #include "text.h"
+#include <sstream>
 
 
 Text::Text() {} // Default constructor (not used)
@@ -40,4 +41,14 @@ void Text::draw(Graphics& graph)
     destRect.w = this->w;
     destRect.h = this->h;
     graph.blitSurface(this->fontTexture,&destRect);
+}
+
+std::string intToString(int input)
+{
+    std::string output;
+    std::stringstream ss;
+    ss << input;
+    output = ss.str();
+
+    return output;
 }

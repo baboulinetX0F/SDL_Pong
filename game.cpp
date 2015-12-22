@@ -49,6 +49,8 @@ void Game::gameLoop()
     this->_player1 = Player(graphics,"img/player.png",15,100,30,SCREEN_HEIGHT/2 - 50);
     this->_player2 = Player(graphics,"img/player.png",15,100,SCREEN_WIDTH - 30,SCREEN_HEIGHT/2 - 50);
     this->_ball = Ball(graphics,"img/ball.png",10,10);
+    this->scoreP1 = 0;
+    this->scoreP2 = 0;
     this->UIInit(graphics);
     SDL_Event e;
 
@@ -73,29 +75,36 @@ void Game::gameLoop()
     }
 }
 
-void Game::Score(int player_id)
+void Game::checkScore()
 {
-    if (player_id == 1)
+    if (_ball.getPendingPoint()==2)
     {
-        score[0]++;
+        scoreP2++;
+        this->textScoreP2.editText(intToString(scoreP2));
+        _ball.resetPendingPoint();
     }
-    else if (player_id == 2)
+    else if (_ball.getPendingPoint()==1)
     {
-        score[1]++;
+         scoreP1++;
+         this->textScoreP1.editText(intToString(scoreP1));
+         _ball.resetPendingPoint();
     }
 }
 
 
 void Game::UIInit(Graphics& graph)
 {
-    this->scoreP1 = Text(graph,"font/Retro.ttf",24,"P1",SCREEN_WIDTH/4,20);
-    this->scoreP2 = Text(graph,"font/Retro.ttf",24,"P2",SCREEN_WIDTH/1.5,20);
+    this->textScoreP1 = Text(graph,"font/Retro.ttf",24,intToString(scoreP1),SCREEN_WIDTH/4,20);
+    this->textScoreP2 = Text(graph,"font/Retro.ttf",24,intToString(scoreP2),SCREEN_WIDTH/1.5,20);
 }
 
 // Calls all the update functions of the differents game objects
 void Game::Update()
 {
     this->_ball.Update();
+
+    checkScore();
+
     if (checkCollision(_ball.getPos(),_player1.getPos()))
     {
         if (_ball.getPos().x >= _player1.getPos().x + _player1.getPos().w/2)
@@ -173,8 +182,8 @@ void Game::draw(Graphics& graph)
     this->_player1.draw(graph);
     this->_player2.draw(graph);
     this->_ball.draw(graph);
-    this->scoreP1.draw(graph);
-    this->scoreP2.draw(graph);
+    this->textScoreP1.draw(graph);
+    this->textScoreP2.draw(graph);
 
     graph.flip();
 }

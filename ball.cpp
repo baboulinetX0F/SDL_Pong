@@ -59,13 +59,13 @@ void Ball::Update()
 
     if (pos.x < 0)
     {
+       pendingPoint = 2;
        init();
-
     }
     else if (pos.x > SCREEN_WIDTH)
     {
+        pendingPoint = 1;
         init();
-
     }
     if (pos.y <= 0)
     {
@@ -81,6 +81,16 @@ struct Position Ball::getPos()
 {
     return pos;
 };
+
+int Ball::getPendingPoint()
+{
+    return pendingPoint;
+}
+
+void Ball::resetPendingPoint()
+{
+    pendingPoint = 0;
+}
 
 Ball::~Ball()
 {

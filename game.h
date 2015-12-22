@@ -16,16 +16,17 @@ public:
     void draw(Graphics& graph);
     void handleInput(const Uint8 *keystate);
     void Update();
-    void Score(int player_id);
+    void checkScore();
     void UIInit(Graphics& graph);
 
 private:
     Player _player1;
     Player _player2;
     Ball _ball;
-    Text scoreP1;
-    Text scoreP2;
-    int* score; // score[0] = Player 1 SCORE / score[1] = Player 2 SCORE
+    Text textScoreP1;
+    Text textScoreP2;
+    int scoreP1;
+    int scoreP2;
 };
 
 #endif // GAME_H_INCLUDED
