@@ -7,7 +7,7 @@ Audio::Audio()
 {
     if ( Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
     {
-        printf("Error : Mixer could not be initialized");
+        //printf("Error : Mixer could not be initialized");
     }
 }
 
@@ -27,7 +27,7 @@ void Audio::loadSound(std::string filePath)
         }
         else
         {
-            printf("Cannot load sound file ");
+            //printf("Cannot load sound file ");
         }
     }
 
@@ -38,7 +38,7 @@ void Audio::playSound(std::string name)
 {
     if (this->_soundsLoaded.count(name) == 0)
     {
-        printf("ERROR : Sound to played is not loaded");
+        //printf("ERROR : Sound to played is not loaded");
     }
     else
     {
